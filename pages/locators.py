@@ -25,3 +25,4 @@ class ProductPageLocators:
     PRODUCT_PRICE_LINK = (By.CSS_SELECTOR, ".product_main p[class='price_color']")
     ITEM_NAME_IN_THE_MESSAGE_LINK = (By.CSS_SELECTOR, "#messages :first-child > .alertinner > strong")
     ITEM_PRICE_IN_THE_MESSAGE_LINK = (By.CSS_SELECTOR, "#messages :nth-child(3) > .alertinner strong")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages > div.alert")
