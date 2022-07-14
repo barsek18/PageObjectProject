@@ -5,8 +5,11 @@ from .locators import LoginPageLocators
 class LoginPage(BasePage):
     def should_be_login_page(self):
         self.should_be_login_url()
+        print("should_be_login_url ... ok")
         self.should_be_login_form()
+        print("should_be_login_form ... ok")
         self.should_be_register_form()
+        print("should_be_register_form ... ok")
 
     def should_be_login_url(self):
         # реализуйте проверку на корректный url адрес
