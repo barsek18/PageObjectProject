@@ -1,4 +1,5 @@
 from .pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
 import pytest
 
 
@@ -39,7 +40,7 @@ def test_guest_can_add_product_to_basket(browser, link):
     prod_page.should_verificate_product_and_item_price()  # <--- lass ProductPage
 
 
-@pytest.mark.xfail
+@pytest.mark.skip
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/uk/catalogue/coders-at-work_207/"
     prod_page = ProductPage(browser, link)
@@ -54,10 +55,20 @@ def test_guest_cant_see_success_message(browser):
     prod_page.open()
     prod_page.should_not_be_success_message()
 
-@pytest.mark.xfail
+
+@pytest.mark.skip
 def test_message_disappeared_after_adding_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/uk/catalogue/coders-at-work_207/"
     prod_page = ProductPage(browser, link)
     prod_page.open()
     prod_page.should_click_button_add_to_basket()
     prod_page.should_disappeared_success_message()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/uk/catalogue/coders-at-work_207/"
+    prod_page = ProductPage(browser, link)
+    prod_page.open()
+    basket_page = BasketPage(browser, browser.current_url)
+    basket_page.should_not_be_product_in_the_basket()
+    basket_page.should_be_empty_basket_message()
